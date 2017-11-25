@@ -14,3 +14,10 @@ pipelines:
           - apt-get update
           - apt-get -qq install git-ftp
           - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://$FTP_HOST --all
+  branches: # Automated triggers on commits to branches
+    master: # -- When committing to master branch
+    - step:
+        script:
+          - apt-get update
+          - apt-get -qq install git-ftp
+          - git ftp push --user $FTP_USERNAME --passwd $FTP_PASSWORD ftp://$FTP_HOST
